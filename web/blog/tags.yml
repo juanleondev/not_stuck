@@ -1,19 +1,29 @@
-facebook:
-  label: Facebook
-  permalink: /facebook
-  description: Facebook tag description
+flutter:
+  label: Flutter
+  permalink: /flutter
+  description: Posts about Flutter development
 
-hello:
-  label: Hello
-  permalink: /hello
-  description: Hello tag description
+code-generation:
+  label: Code Generation
+  permalink: /code-generation
+  description: Posts about code generation techniques
 
-docusaurus:
-  label: Docusaurus
-  permalink: /docusaurus
-  description: Docusaurus tag description
+database:
+  label: Database
+  permalink: /database
+  description: Posts about database development and synchronization
 
-hola:
-  label: Hola
-  permalink: /hola
-  description: Hola tag description
+protobuf:
+  label: Protobuf
+  permalink: /protobuf
+  description: Posts about Protocol Buffers
+
+graphql:
+  label: GraphQL
+  permalink: /graphql
+  description: Posts about GraphQL development
+
+ferry:
+  label: Ferry
+  permalink: /ferry
+  description: Posts about Ferry GraphQL client

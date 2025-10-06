@@ -6,7 +6,8 @@ import type * as Preset from "@docusaurus/preset-classic";
 
 const config: Config = {
   title: "Juan Jose Leon Camilo",
-  tagline: "Senior Software Engineer",
+  tagline:
+    "Senior software engineer with a bachelor's degree in computer science and +5 years of experience developing apps with Flutter and Firebase. Co-founder of Paulonia. Content creator for Latam Flutter community and speaker.",
   favicon: "img/favicon.ico",
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -15,15 +16,15 @@ const config: Config = {
   },
 
   // Set the production url of your site here
-  url: "https://your-docusaurus-site.example.com",
+  url: "https://notstuck.dev",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/",
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: "facebook", // Usually your GitHub org/user name.
-  projectName: "docusaurus", // Usually your repo name.
+  organizationName: "juanleondev", // Usually your GitHub org/user name.
+  projectName: "not_stuck", // Usually your repo name.
 
   onBrokenLinks: "throw",
 
@@ -43,8 +44,7 @@ const config: Config = {
           sidebarPath: "./sidebars.ts",
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+          editUrl: "https://github.com/juanleondev/not_stuck/tree/main/web/",
         },
         blog: {
           showReadingTime: true,
@@ -54,8 +54,7 @@ const config: Config = {
           },
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+          editUrl: "https://github.com/juanleondev/not_stuck",
           // Useful options to enforce blogging best practices
           onInlineTags: "warn",
           onInlineAuthors: "warn",
@@ -75,22 +74,27 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: "My Site",
+      title: "Juan Leon",
       logo: {
-        alt: "My Site Logo",
+        alt: "Juan Leon Logo",
         src: "img/logo.svg",
       },
       items: [
+        { to: "/blog", label: "Blog", position: "left" },
         {
           type: "docSidebar",
           sidebarId: "tutorialSidebar",
           position: "left",
-          label: "Tutorial",
+          label: "About",
         },
-        { to: "/blog", label: "Blog", position: "left" },
         {
-          href: "https://github.com/facebook/docusaurus",
+          href: "https://github.com/juanleondev",
           label: "GitHub",
+          position: "right",
+        },
+        {
+          href: "https://www.linkedin.com/in/juanleoncamilo/",
+          label: "LinkedIn",
           position: "right",
         },
       ],
@@ -99,46 +103,38 @@ const config: Config = {
       style: "dark",
       links: [
         {
-          title: "Docs",
-          items: [
-            {
-              label: "Tutorial",
-              to: "/docs/intro",
-            },
-          ],
-        },
-        {
-          title: "Community",
-          items: [
-            {
-              label: "Stack Overflow",
-              href: "https://stackoverflow.com/questions/tagged/docusaurus",
-            },
-            {
-              label: "Discord",
-              href: "https://discordapp.com/invite/docusaurus",
-            },
-            {
-              label: "X",
-              href: "https://x.com/docusaurus",
-            },
-          ],
-        },
-        {
-          title: "More",
+          title: "About",
           items: [
             {
               label: "Blog",
               to: "/blog",
             },
+          ],
+        },
+        {
+          title: "Connect",
+          items: [
             {
               label: "GitHub",
-              href: "https://github.com/facebook/docusaurus",
+              href: "https://github.com/juanleondev",
+            },
+            {
+              label: "LinkedIn",
+              href: "https://www.linkedin.com/in/juanleoncamilo/",
+            },
+          ],
+        },
+        {
+          title: "Projects",
+          items: [
+            {
+              label: "Paulonia",
+              href: "https://paulonia.dev",
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Juan Jose Leon Camilo. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,

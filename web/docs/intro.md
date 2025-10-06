@@ -2,46 +2,36 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# About Juan Leon
 
-Let's discover **Docusaurus in less than 5 minutes**.
+Welcome to my personal blog and portfolio! I'm Juan Jose Leon Camilo, a senior software engineer with a passion for Flutter development and community building.
 
-## Getting Started
+## My Background
 
-Get started by **creating a new site**.
+- **Education**: Bachelor's degree in Computer Science
+- **Experience**: +5 years developing apps with Flutter and Firebase
+- **Role**: Co-founder of Paulonia
+- **Projects**: Participated in +25 projects, from e-commerce to image-processing apps
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+## Community Involvement
 
-### What you'll need
+I'm an active content creator for the Latam Flutter community and have given 5 talks at various conferences. I also organize the Flutter Arequipa meetup, where we share knowledge and best practices with fellow developers.
 
-- [Node.js](https://nodejs.org/en/download/) version 20.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+## Expertise
 
-## Generate a new site
+My main focus areas include:
 
-Generate a new Docusaurus site using the **classic template**.
+- Flutter app development
+- Firebase integration
+- Code generation techniques
+- Database synchronization
+- Type safety and best practices
 
-The classic template will automatically be added to your project after you run the command:
+## Connect With Me
 
-```bash
-npm init docusaurus@latest my-website classic
-```
+Feel free to reach out through:
 
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
+- [GitHub](https://github.com/juanleondev)
+- [LinkedIn](https://www.linkedin.com/in/juanleoncamilo/)
 
-The command also installs all necessary dependencies you need to run Docusaurus.
-
-## Start your site
-
-Run the development server:
-
-```bash
-cd my-website
-npm run start
-```
-
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
-
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
-
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+Thanks for visiting my site!
