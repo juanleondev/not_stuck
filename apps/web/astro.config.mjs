@@ -10,7 +10,7 @@ const webPort = Number(env.WEB_PORT ?? 4321);
 const apiUrl = env.API_URL ?? `http://localhost:${env.API_PORT ?? 8787}`;
 
 export default defineConfig({
-  site: "https://notstuck.dev",
+  site: "https://juanjodev.com",
   output: "static",
   integrations: [mdx(), sitemap()],
   server: { port: webPort, host: env.HOST ?? "127.0.0.1" },

@@ -11,7 +11,7 @@ Status: v1, defined 2026-11-04. Proof stories (LOCL, Viaboby) are still drafts a
 | | |
 |---|---|
 | **Public name** | Juanjo (full name Juan José León Camilo only for formal contexts, like the CV) |
-| **Domain** | juanjodev.com (replaces notstuck.dev) |
+| **Domain** | juanjodev.com (notstuck.dev was never deployed) |
 | **Goal (12–18 months)** | Attract clients: product builds and technical advisory |
 | **Primary audience** | Founders (often non-technical) and tech leads / CTOs |
 | **Secondary audience** | The developer community (credibility, talks), never the main target |
@@ -219,6 +219,6 @@ Warm cream with a terracotta accent is a fairly common look. The personality has
 ## 8. Pending
 
 - Expand LOCL and Viaboby with real details, dates and metrics.
-- Final portrait photo.
-- Apply this brand to juanjodev.com (copy in `apps/web/src/site.ts`, styles in `apps/web/src/styles/global.css`) and move the domain.
+- A contact or booking link for the "Book a call" and "Contact" CTAs (they point to LinkedIn for now).
+- Favicon and default social share image.
 - Social post templates (LinkedIn/X image format).

@@ -1,6 +1,6 @@
 # not_stuck
 
-Personal brand monorepo for [notstuck.dev](https://notstuck.dev).
+Personal brand monorepo for [juanjodev.com](https://juanjodev.com).
 
 ```
 apps/web/     Astro site: landing, blog, subscribe form (static, served from Cloudflare's edge)
@@ -81,6 +81,6 @@ npx wrangler secret put TOKEN_SECRET        # long random string
 Set `PUBLIC_TURNSTILE_SITE_KEY` when building the web app, and verify the sending domain in Resend.
 
 ```sh
-npm run deploy -w server/api   # Worker, routed on notstuck.dev/api/*
-npm run deploy -w apps/web     # static assets, custom domain notstuck.dev
+npm run deploy -w server/api   # Worker, routed on juanjodev.com/api/*
+npm run deploy -w apps/web     # static assets, custom domain juanjodev.com
 ```
