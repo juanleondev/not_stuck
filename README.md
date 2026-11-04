@@ -29,6 +29,17 @@ WEB_PORT=4401 API_PORT=8801 npm run dev:web
 
 Local D1 state lives in `server/api/.wrangler/state-<API_PORT>/` (migrations are applied automatically on start), so instances never share or lock a database. The web dev server fails if its port is taken instead of silently picking another one.
 
+### Parallel instances (one git worktree per feature)
+
+```sh
+node scripts/instance.mjs up feat/my-feature   # worktree in .worktrees/, free ports, deps, servers started
+node scripts/instance.mjs list                 # instances, ports, status
+node scripts/instance.mjs stop|start <branch>
+node scripts/instance.mjs down <branch> [--delete-branch]
+```
+
+Needs Node >= 22.23.4 active in the shell. Ports are picked from free ranges (web 44xx, api 88xx, inspector 93xx) and written to the worktree's `.env`; logs are in `<worktree>/.instance/`.
+
 ### Docker
 
 ```sh
