@@ -8,20 +8,73 @@ import { SITE } from "../site";
 const posts = (await getCollection("blog", ({ data }) => !data.draft))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 3);
+
+// Draft proof stories; expand with details and metrics as BRAND.md section 3 evolves.
+const work = [
+  {
+    name: "Viaboby",
+    summary: "From idea to a trending app in Peru. I built it with image recognition and drove its distribution through social media and local shelters.",
+  },
+  {
+    name: "LOCL",
+    summary: "Inherited heavy technical debt and a stack that didn't fit. Fixed it piece by piece, backward compatible, while shipping features every week.",
+  },
+];
+
+const offer = [
+  { label: "Build", title: "Your MVP, from 0 to 1", summary: "Mobile and web products ready for real users, built with someone who asks why before writing code." },
+  { label: "Advise", title: "Fractional CTO", summary: "Architecture, stack, team and process decisions, so your product keeps moving without a full-time hire." },
+];
 ---
 
 <Base>
-  <section>
-    <p class="meta">Hi, I'm</p>
-    <h1>{SITE.name}</h1>
-    <p class="lede">{SITE.description}</p>
+  <section class="hero">
+    <p class="kicker">{SITE.role}</p>
+    <h1>I build products with founders, from idea to <em>real users</em>.</h1>
+    <p class="lede">
+      I get involved in the business, not just the code. I ask, measure and decide with you, so we make fewer
+      mistakes and never get stuck.
+    </p>
+    <div class="cta-row">
+      <a class="btn primary" href={SITE.linkedin}>Let's talk</a>
+      <a class="btn ghost" href="#work">See my work</a>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="offer-title">
+    <h2 id="offer-title">How I can help</h2>
+    <div class="cards">
+      {
+        offer.map((item) => (
+          <article class="card">
+            <p class="label">{item.label}</p>
+            <h3>{item.title}</h3>
+            <p>{item.summary}</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section" id="work" aria-labelledby="work-title">
+    <h2 id="work-title">Selected work</h2>
+    <div class="cards">
+      {
+        work.map((item) => (
+          <article class="card">
+            <h3>{item.name}</h3>
+            <p>{item.summary}</p>
+          </article>
+        ))
+      }
+    </div>
   </section>
 
   <SubscribeForm />
 
-  <section>
-    <h2>Latest posts</h2>
+  <section class="section" aria-labelledby="writing-title">
+    <h2 id="writing-title">Latest writing</h2>
     <PostList posts={posts} />
-    <p><a href="/blog">All posts →</a></p>
+    <p><a href="/blog">All writing →</a></p>
   </section>
 </Base>
