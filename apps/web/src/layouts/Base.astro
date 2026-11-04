@@ -42,10 +42,10 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
       <nav aria-label="Main">
         <a class="wordmark" href="/" aria-label={`${SITE.name}, home`}>juanjo<span>.</span></a>
         <ul>
+          <li><a href="/#work">Work</a></li>
           <li><a href="/blog">Writing</a></li>
           <li><a href="/#subscribe">{SITE.newsletter.name}</a></li>
-          <li><a href="/cv.pdf">CV</a></li>
-          <li><a href="/rss.xml">RSS</a></li>
+          <li><a href={SITE.linkedin}>Contact</a></li>
         </ul>
       </nav>
     </header>
@@ -53,7 +53,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <footer>
       <div>
         <p class="philosophy">Not stuck<span>.</span> Always a next step.</p>
-        <p><a href={SITE.linkedin}>LinkedIn</a> · <a href={SITE.github}>GitHub</a></p>
+        <p><a href={SITE.linkedin}>LinkedIn</a> · <a href={SITE.github}>GitHub</a> · <a href="/cv.pdf">CV</a> · <a href="/rss.xml">RSS</a></p>
       </div>
     </footer>
   </body>
