@@ -13,6 +13,9 @@ export const SITE = {
   url: "https://juanjodev.com",
   github: "https://github.com/juanleondev",
   linkedin: "https://www.linkedin.com/in/juanleoncamilo/",
-  // Public Cloudflare Turnstile site key; set PUBLIC_TURNSTILE_SITE_KEY at build time.
-  turnstileSiteKey: import.meta.env.PUBLIC_TURNSTILE_SITE_KEY ?? "1x00000000000000000000AA",
+  // Public Turnstile site key: the juanjodev.com widget in production builds, Cloudflare's
+  // always-pass test key in dev. PUBLIC_TURNSTILE_SITE_KEY overrides both.
+  turnstileSiteKey:
+    import.meta.env.PUBLIC_TURNSTILE_SITE_KEY ??
+    (import.meta.env.PROD ? "0x4AAAAAAFz-joC0j2U3k9em" : "1x00000000000000000000AA"),
 } as const;
