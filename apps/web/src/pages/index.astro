@@ -1,5 +1,7 @@
 ---
+import { Picture } from "astro:assets";
 import { getCollection } from "astro:content";
+import portrait from "../assets/juanjo-portrait.png";
 import Base from "../layouts/Base.astro";
 import PostList from "../components/PostList.astro";
 import SubscribeForm from "../components/SubscribeForm.astro";
@@ -31,9 +33,17 @@ const proof = [
         <a class="btn ghost" href="#work">See my work</a>
       </div>
     </div>
-    <div class="portrait" role="img" aria-label={`Portrait of ${SITE.name}`}>
-      <span>JJ</span>
-    </div>
+    <Picture
+      class="portrait"
+      src={portrait}
+      alt={`Portrait of ${SITE.name}`}
+      formats={["avif", "webp"]}
+      fallbackFormat="jpg"
+      widths={[320, 480, 640, 900]}
+      sizes="(max-width: 760px) 20rem, 24rem"
+      loading="eager"
+      fetchpriority="high"
+    />
   </section>
 
   <section class="proof" id="work" aria-label="Selected work">

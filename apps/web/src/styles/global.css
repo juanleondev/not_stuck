@@ -64,9 +64,9 @@ footer a { color: var(--muted); }
 .btn.primary { background: var(--accent); color: var(--on-accent); }
 .btn.ghost { color: var(--fg); border-color: var(--border); }
 .btn.ghost:hover { border-color: var(--fg); }
-/* Placeholder until the natural-light portrait is ready (BRAND.md, section 6). */
-.portrait { aspect-ratio: 4 / 5; max-width: 100%; border-radius: 14px; background: var(--surface); border: 1px solid var(--border); display: grid; place-items: center; }
-.portrait span { font-family: var(--font-display); font-weight: 600; font-size: 3.5rem; color: var(--muted); }
+/* The portrait has a white background: multiply blends it into the surface in light mode. */
+.portrait { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; max-width: 100%; object-fit: cover; object-position: center top; border-radius: 14px; background: var(--surface); }
+@media (prefers-color-scheme: light) { .portrait { mix-blend-mode: multiply; } }
 .proof { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; border-top: 1px solid var(--border); margin-top: 3.5rem; padding-top: 1.75rem; scroll-margin-top: 1rem; }
 .proof h2 { font-size: 1.4rem; margin: 0 0 .35rem; }
 .proof p { margin: 0; color: var(--muted); font-size: .95rem; }
@@ -74,7 +74,7 @@ footer a { color: var(--muted); }
 .writing { max-width: var(--max); }
 @media (max-width: 760px) {
   .hero { grid-template-columns: minmax(0, 1fr); }
-  .portrait { aspect-ratio: 16 / 9; }
+  .portrait { aspect-ratio: 1 / 1; max-width: 20rem; }
   .proof { grid-template-columns: minmax(0, 1fr); }
 }
 
