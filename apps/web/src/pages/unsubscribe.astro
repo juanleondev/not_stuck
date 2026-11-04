@@ -1,0 +1,32 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base title="Unsubscribe" noindex>
+  <h1>Unsubscribe</h1>
+  <p class="status" role="status" aria-live="polite" data-state="idle" id="status">Missing token.</p>
+  <button id="action" hidden>Unsubscribe</button>
+</Base>
+
+<script>
+  const token = new URLSearchParams(location.search).get("token");
+  const status = document.getElementById("status")!;
+  const button = document.getElementById("action") as HTMLButtonElement;
+  if (token) {
+    status.textContent = "Click the button to continue.";
+    button.hidden = false;
+    button.addEventListener("click", async () => {
+      button.disabled = true;
+      const res = await fetch("/api/unsubscribe", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ token }),
+      }).catch(() => null);
+      const body = (await res?.json().catch(() => ({}))) as { message?: string } | undefined;
+      status.dataset.state = res?.ok ? "ok" : "error";
+      status.textContent = body?.message ?? (res?.ok ? "Done." : "Something went wrong.");
+      if (res?.ok) button.hidden = true;
+      else button.disabled = false;
+    });
+  }
+</script>

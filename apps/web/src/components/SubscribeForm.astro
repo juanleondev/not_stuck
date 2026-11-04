@@ -1,0 +1,50 @@
+---
+import { SITE } from "../site";
+---
+
+<section class="subscribe" aria-labelledby="subscribe-title">
+  <h2 id="subscribe-title">Get new posts by email</h2>
+  <p class="meta">Flutter, Firebase and the occasional deep dive. No spam, unsubscribe anytime.</p>
+  <form method="post" action="/api/subscribe" data-subscribe>
+    <label for="email" hidden>Email</label>
+    <input id="email" name="email" type="email" placeholder="you@example.com" required autocomplete="email" />
+    <div class="cf-turnstile" data-sitekey={SITE.turnstileSiteKey} data-theme="auto"></div>
+    <button type="submit">Subscribe</button>
+    <p class="status" role="status" aria-live="polite" data-state="idle"></p>
+  </form>
+</section>
+
+<script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script>
+  document.querySelectorAll<HTMLFormElement>("form[data-subscribe]").forEach((form) => {
+    const status = form.querySelector<HTMLElement>(".status")!;
+    const button = form.querySelector<HTMLButtonElement>("button")!;
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const data = new FormData(form);
+      button.disabled = true;
+      status.dataset.state = "idle";
+      status.textContent = "Subscribing…";
+      try {
+        const res = await fetch("/api/subscribe", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({
+            email: data.get("email"),
+            turnstileToken: data.get("cf-turnstile-response"),
+          }),
+        });
+        const body = (await res.json().catch(() => ({}))) as { message?: string };
+        status.dataset.state = res.ok ? "ok" : "error";
+        status.textContent = body.message ?? (res.ok ? "Check your inbox to confirm." : "Something went wrong.");
+        if (res.ok) form.reset();
+      } catch {
+        status.dataset.state = "error";
+        status.textContent = "Network error, please try again.";
+      } finally {
+        button.disabled = false;
+        (window as unknown as { turnstile?: { reset(): void } }).turnstile?.reset();
+      }
+    });
+  });
+</script>

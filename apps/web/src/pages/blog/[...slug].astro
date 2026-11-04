@@ -1,0 +1,26 @@
+---
+import { getCollection, render } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import SubscribeForm from "../../components/SubscribeForm.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog", ({ data }) => !data.draft);
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const fmt = new Intl.DateTimeFormat("en", { dateStyle: "long", timeZone: "UTC" });
+---
+
+<Base title={post.data.title} description={post.data.description} image={post.data.image}>
+  <article class="prose">
+    <h1>{post.data.title}</h1>
+    <p class="meta">{fmt.format(post.data.pubDate)}</p>
+    <ul class="tags">
+      {post.data.tags.map((tag) => <li><a href={`/blog/tag/${tag}`}>#{tag}</a></li>)}
+    </ul>
+    <Content />
+  </article>
+  <SubscribeForm />
+</Base>
