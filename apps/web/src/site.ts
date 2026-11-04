@@ -10,7 +10,7 @@ export const SITE = {
     name: "Not Stuck",
     pitch: "Every two weeks: one decision founders face when building a product, and how I'd make it.",
   },
-  url: "https://notstuck.dev",
+  url: "https://juanjodev.com",
   github: "https://github.com/juanleondev",
   linkedin: "https://www.linkedin.com/in/juanleoncamilo/",
   // Public Cloudflare Turnstile site key; set PUBLIC_TURNSTILE_SITE_KEY at build time.

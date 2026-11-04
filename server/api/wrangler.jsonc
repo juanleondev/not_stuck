@@ -3,10 +3,10 @@
   "name": "not-stuck-api",
   "main": "src/index.ts",
   "compatibility_date": "2026-08-22",
-  "routes": [{ "pattern": "notstuck.dev/api/*", "zone_name": "notstuck.dev" }],
+  "routes": [{ "pattern": "juanjodev.com/api/*", "zone_name": "juanjodev.com" }],
   "vars": {
-    "SITE_URL": "https://notstuck.dev",
-    "MAIL_FROM": "Juan Jose Leon <hello@notstuck.dev>"
+    "SITE_URL": "https://juanjodev.com",
+    "MAIL_FROM": "Juanjo <hello@juanjodev.com>"
   },
   "d1_databases": [
     {
