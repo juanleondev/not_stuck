@@ -20,7 +20,24 @@ npm test          # API tests (Vitest on the Workers runtime, real D1)
 npm run check     # astro check + tsc
 ```
 
-First run only: `npm run db:migrate:local -w server/api`.
+Ports are configurable so several instances can run at once (for example one per feature or worktree). Copy `.env.example` to `.env` or pass them inline:
+
+```sh
+API_PORT=8801 INSPECTOR_PORT=9301 npm run dev:api
+WEB_PORT=4401 API_PORT=8801 npm run dev:web
+```
+
+Local D1 state lives in `server/api/.wrangler/state-<API_PORT>/` (migrations are applied automatically on start), so instances never share or lock a database. The web dev server fails if its port is taken instead of silently picking another one.
+
+### Docker
+
+```sh
+docker compose up --build
+# a second, isolated instance:
+COMPOSE_PROJECT_NAME=feat-x WEB_PORT=4401 API_PORT=8801 INSPECTOR_PORT=9301 docker compose up --build
+```
+
+Each compose project gets its own containers and its own D1 state volume. `astro dev` allows one dev server per directory, so run parallel instances from separate git worktrees (or use Docker). Source in `apps/web/src` and `server/api/src` is bind-mounted for live reload.
 
 ## Writing posts
 
