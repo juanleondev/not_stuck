@@ -76,35 +76,57 @@ function listeners(port) {
   }
 }
 
+const groupsFile = (wt) => path.join(wt, ".instance", "pgids");
+const readGroups = (wt) => (existsSync(groupsFile(wt)) ? readFileSync(groupsFile(wt), "utf8").split("\n").filter(Boolean).map(Number) : []);
+
 async function stopServers(wt) {
   const env = readEnv(wt);
   const ports = ["WEB_PORT", "API_PORT", "INSPECTOR_PORT"].map((k) => Number(env[k])).filter(Boolean);
+  // Kill whole process groups first: supervisors like wrangler respawn workerd if only the listener dies.
+  // Port listeners are still killed, for servers that detach from their group (the astro dev daemon).
+  const groupAlive = (pgid) => {
+    try {
+      process.kill(-pgid, 0);
+      return true;
+    } catch {
+      return false;
+    }
+  };
+  const running = () => ({ groups: readGroups(wt).filter(groupAlive), pids: ports.flatMap(listeners) });
   for (const signal of ["SIGTERM", "SIGKILL"]) {
-    const pids = ports.flatMap(listeners);
-    if (pids.length === 0) return;
-    for (const pid of pids) {
+    const { groups, pids } = running();
+    if (groups.length === 0 && pids.length === 0) break;
+    for (const target of [...groups.map((g) => -g), ...pids]) {
       try {
-        process.kill(pid, signal);
+        process.kill(target, signal);
       } catch {}
     }
-    for (let i = 0; i < 20 && ports.some((p) => listeners(p).length); i++) await sleep(250);
+    for (let i = 0; i < 20; i++) {
+      const left = running();
+      if (left.groups.length === 0 && left.pids.length === 0) break;
+      await sleep(250);
+    }
   }
+  rmSync(groupsFile(wt), { force: true });
 }
 
 function launch(wt, script, logName) {
   const fd = openSync(path.join(wt, ".instance", logName), "w");
   const child = spawn("npm", ["run", script], { cwd: wt, detached: true, stdio: ["ignore", fd, fd] });
   closeSync(fd);
-  let exited = false;
-  child.on("exit", () => (exited = true));
+  // detached makes the child a process-group leader, so its pid is the group id
+  writeFileSync(groupsFile(wt), [...readGroups(wt), child.pid].join("\n") + "\n");
+  let failed = false;
+  // A clean exit is not a failure: astro dev daemonizes and its launcher exits 0 once the server is up.
+  child.on("exit", (code) => (failed = code !== 0));
   child.unref();
-  return () => exited;
+  return () => failed;
 }
 
 async function waitFor(url, hasExited, name, wt) {
   for (let i = 0; i < 180; i++) {
     try {
-      if ((await fetch(url)).ok) return;
+      if ((await fetch(url, { signal: AbortSignal.timeout(2000) })).ok) return;
     } catch {}
     if (hasExited()) die(`${name} exited early, see ${path.join(wt, ".instance", name + ".log")}`);
     await sleep(500);
