@@ -5,7 +5,7 @@ Personal brand monorepo for [notstuck.dev](https://notstuck.dev).
 ```
 apps/web/     Astro site: landing, blog, subscribe form (static, served from Cloudflare's edge)
 server/api/   Hono Worker: newsletter subscribe / confirm / unsubscribe (Cloudflare D1 + Resend)
-personal/     Personal documents (not part of the site)
+personal/     Personal documents (the CV PDF is published to apps/web/public/cv.pdf)
 ```
 
 Requires Node >= 22.23.4 (`.node-version` points to Node 24).

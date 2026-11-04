@@ -1,0 +1,109 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue,
+    citecolor=black
+}
+
+% ATS-friendly formatting: simple, linear, no complex layouts
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+% Simple section formatting
+\makeatletter
+\renewcommand{\section}{%
+  \@startsection{section}{1}{0pt}%
+  {-12pt}{6pt}%
+  {\normalfont\large\bfseries\uppercase}%
+}
+\makeatother
+
+% Custom itemize for ATS-friendly spacing
+\newenvironment{atsitemize}{%
+  \begin{list}{$\bullet$}{%
+    \setlength{\leftmargin}{0.5in}%
+    \setlength{\itemsep}{2pt}%
+    \setlength{\topsep}{0pt}%
+    \setlength{\partopsep}{0pt}%
+  }%
+}{%
+  \end{list}%
+}
+
+\begin{document}
+
+% Header - ATS-friendly: all contact info in body
+\begin{center}
+{\LARGE\bfseries Juan Jose Leon Camilo}\\[6pt]
+GitHub: \href{https://github.com/juanleondev}{github.com/juanleondev} \quad | \quad LinkedIn: \href{https://linkedin.com/in/juanleoncamilo}{linkedin.com/in/juanleoncamilo}
+\end{center}
+
+\vspace{12pt}
+
+\section*{Summary Statement}
+Software engineer with a bachelor's degree in computer science and 6 years of experience developing applications with Flutter. Co-founder of Paulonia. Participated in 19 projects, from e-commerce to image processing apps. Content creator for Latam Flutter community and speaker at 5 talks. Seeking to leverage proven leadership and expertise to become Google Developer Expert.
+
+\section*{Work Experience}
+
+\textbf{Senior Software Engineer} \hfill \textbf{October 2022 - Present}\\
+\textit{Somnio Software — Remote (Montevideo, Uruguay)}
+\begin{atsitemize}
+    \item \textbf{\href{https://mylearnie.com/}{Learnie}:} Reviewed architecture and proposed improvements; implemented auth flow to persist authentication between mobile app and web app using Cloud Functions and Firebase Auth (custom token)
+    \item Developed and maintained Flutter applications using Firebase and modern development practices
+    \item Built and maintained Flutter applications, focusing on mobile app development
+\end{atsitemize}
+
+\textbf{Mobile Software Engineer} \hfill \textbf{January 2020 - June 2025}\\
+\textit{Paulonia — Arequipa, Perú (Self-employed)}
+\begin{atsitemize}
+    \item Tested, coded, reviewed, and delivered apps to AppStore, Playstore, and Web
+    \item Guided the transition of the team from using GetX as state management to using Flutter-Bloc, in order to increase test code coverage, apply SOLID principles, improve readability and facilitate maintenance on large projects
+    \item Trained entry-level developers (Flutter, SCRUM, and Git)
+    \item Reviewed bugs reported by Sentry in production apps, and deployed new versions fixing them
+    \item Included linter, code formatter, and name conventions in order to standardize the code of all developers
+\end{atsitemize}
+
+\section*{Education}
+
+\textbf{Bachelor in Computer Science} \hfill \textbf{April 2014 - December 2019}\\
+\textit{San Agustin University, Arequipa, Perú}
+
+\section*{Skills}
+
+\textbf{Expert:} Flutter, Dart, Firebase, Mobile app architecture, Responsive UI
+
+\textbf{Advanced:} REST APIs, Supabase, CI/CD (GitHub Actions, Codemagic, CircleCI)
+
+\textbf{Familiar:} PostgreSQL, Node.js (NestJS), GraphQL, Protobuf, Figma
+
+\section*{Volunteer Experience}
+
+\textbf{Lead Organizer} \hfill \textbf{2023 - Present}\\
+\textit{\href{https://www.linkedin.com/company/flutterconflatam/posts/?feedView=all}{FlutterConfLatam} — Latin America}
+\begin{atsitemize}
+    \item Main organizer of one of the largest Flutter conferences in Latin America
+    \item Led end-to-end event planning including venue selection, budgeting, sponsorship acquisition, and logistics
+    \item Coordinated international speakers, sponsors, and volunteers across multiple countries
+    \item Managed ticketing strategy, marketing campaigns, and community engagement
+    \item Organized live streaming, multi-track talks, and on-site technical setups
+    \item Built partnerships with tech companies and developer communities to grow the Flutter ecosystem in the region
+\end{atsitemize}
+
+\vspace{6pt}
+
+\textbf{Founding Organizer} \hfill \textbf{2022 - Present}\\
+\textit{Flutter Meetup Arequipa — Arequipa, Peru}
+\begin{atsitemize}
+    \item Organized local Flutter meetups and extended community events
+    \item Coordinated speakers, venues, and event logistics for in-person sessions
+    \item Promoted knowledge sharing and networking among developers
+    \item Distributed community swag and encouraged participation in larger regional events
+\end{atsitemize}
+
+\end{document}
+
