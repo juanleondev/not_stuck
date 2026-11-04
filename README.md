@@ -78,7 +78,7 @@ npx wrangler secret put TURNSTILE_SECRET
 npx wrangler secret put TOKEN_SECRET        # long random string
 ```
 
-Set `PUBLIC_TURNSTILE_SITE_KEY` when building the web app, and verify the sending domain in Resend.
+Production builds use the juanjodev.com Turnstile site key from `apps/web/src/site.ts` (override with `PUBLIC_TURNSTILE_SITE_KEY`). The sending domain is verified in Resend.
 
 ```sh
 npm run deploy -w server/api   # Worker, routed on juanjodev.com/api/*
