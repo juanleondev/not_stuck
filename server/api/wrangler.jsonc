@@ -12,7 +12,7 @@
     {
       "binding": "DB",
       "database_name": "not-stuck",
-      "database_id": "REPLACE_WITH_D1_DATABASE_ID",
+      "database_id": "9b203153-c699-462e-a98a-310902bb2956",
       "migrations_dir": "migrations"
     }
   ],
