@@ -3,8 +3,11 @@ import { SITE } from "../site";
 ---
 
 <section class="subscribe" id="subscribe" aria-labelledby="subscribe-title">
-  <h2 id="subscribe-title">{SITE.newsletter.name}<span>.</span></h2>
-  <p class="meta">{SITE.newsletter.pitch} No spam, unsubscribe anytime.</p>
+  <div class="mast">
+    <h2 id="subscribe-title">{SITE.newsletter.name}<span>.</span></h2>
+    <p class="meta">A newsletter by {SITE.name}</p>
+  </div>
+  <p>{SITE.newsletter.pitch} No spam, unsubscribe anytime.</p>
   <form method="post" action="/api/subscribe" data-subscribe>
     <label for="email" hidden>Email</label>
     <input id="email" name="email" type="email" placeholder="you@startup.com" required autocomplete="email" />
