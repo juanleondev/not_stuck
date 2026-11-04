@@ -1,8 +1,15 @@
+// Copy follows BRAND.md (positioning, voice and copy kit).
 export const SITE = {
-  name: "Juan Jose Leon Camilo",
-  title: "Juan Jose Leon Camilo — Senior Software Engineer & Flutter Developer",
+  name: "Juanjo",
+  fullName: "Juan José León Camilo",
+  role: "Product engineer for founders",
+  title: "Juanjo — Product engineer for founders",
   description:
-    "Senior software engineer with +5 years of experience building apps with Flutter and Firebase. Co-founder of Paulonia, content creator for the Latam Flutter community and speaker.",
+    "I build products with founders, from idea to real users. MVPs and fractional CTO support from someone who gets involved in the business, not just the code.",
+  newsletter: {
+    name: "Not Stuck",
+    pitch: "Every two weeks: one decision founders face when building a product, and how I'd make it.",
+  },
   url: "https://notstuck.dev",
   github: "https://github.com/juanleondev",
   linkedin: "https://www.linkedin.com/in/juanleoncamilo/",

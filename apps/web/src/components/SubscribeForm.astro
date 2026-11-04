@@ -2,12 +2,12 @@
 import { SITE } from "../site";
 ---
 
-<section class="subscribe" aria-labelledby="subscribe-title">
-  <h2 id="subscribe-title">Get new posts by email</h2>
-  <p class="meta">Flutter, Firebase and the occasional deep dive. No spam, unsubscribe anytime.</p>
+<section class="subscribe" id="subscribe" aria-labelledby="subscribe-title">
+  <h2 id="subscribe-title">{SITE.newsletter.name}<span>.</span></h2>
+  <p class="meta">{SITE.newsletter.pitch} No spam, unsubscribe anytime.</p>
   <form method="post" action="/api/subscribe" data-subscribe>
     <label for="email" hidden>Email</label>
-    <input id="email" name="email" type="email" placeholder="you@example.com" required autocomplete="email" />
+    <input id="email" name="email" type="email" placeholder="you@startup.com" required autocomplete="email" />
     <div class="cf-turnstile" data-sitekey={SITE.turnstileSiteKey} data-theme="auto"></div>
     <button type="submit">Subscribe</button>
     <p class="status" role="status" aria-live="polite" data-state="idle"></p>
