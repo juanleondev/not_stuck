@@ -1,0 +1,18 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import PostList from "../../components/PostList.astro";
+
+const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+const tags = [...new Set(posts.flatMap((p) => p.data.tags))].sort();
+---
+
+<Base title="Blog — Juan Jose Leon Camilo" description="Posts about Flutter, Firebase and software engineering.">
+  <h1>Blog</h1>
+  <ul class="tags">
+    {tags.map((tag) => <li><a href={`/blog/tag/${tag}`}>#{tag}</a></li>)}
+  </ul>
+  <PostList posts={posts} />
+</Base>

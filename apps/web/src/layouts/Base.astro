@@ -1,0 +1,49 @@
+---
+import "../styles/global.css";
+import { SITE } from "../site";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  noindex?: boolean;
+}
+const { title = SITE.title, description = SITE.description, image, noindex = false } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="alternate" type="application/rss+xml" title={SITE.name} href="/rss.xml" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    {image && <meta property="og:image" content={image} />}
+    <meta name="twitter:card" content={image ? "summary_large_image" : "summary"} />
+    {noindex && <meta name="robots" content="noindex" />}
+  </head>
+  <body>
+    <header>
+      <nav aria-label="Main">
+        <a href="/">{SITE.name}</a>
+        <ul>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/rss.xml">RSS</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main><slot /></main>
+    <footer>
+      <div>
+        <a href={SITE.github}>GitHub</a> · <a href={SITE.linkedin}>LinkedIn</a>
+      </div>
+    </footer>
+  </body>
+</html>
